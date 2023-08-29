@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="sqlmap.mappers.hans.testBoardMapper">
+<!-- mapper 태그 안에 namespace를 Mapper 인터페이스와 맞춰준다. -->
+	<select id="getTestBoardAllList" resultType="TestBoardVO">
+		select
+			seqno, title, content, writer, regdate, hits
+		from
+			adannouncement
+	</select>
+	<select id="getTestBoardView" parameterType="string" resultType="TestBoardVO">
+		select
+			seqno, title, content, writer, regdate, hits
+		from
+			adannouncement
+		where
+			seqno = #{seqno}
+	</select>
+	<insert id="insertTestBoard" parameterType="TestBoardVO">
+		insert into adannouncement
+			(title, content, writer, regdate, hits)
+		values(#{title}, #{content}, #{writer}, now(), "0")
+	</insert>
+	<update id="updateTestBoard" parameterType="TestBoardVO">
+		update adannouncement
+		set	title=#{title}, content=#{content}, writer=#{writer}
+		where seqno=#{seqno}
+	</update>
+	<delete id="deleteTestBoard" parameterType="TestBoardVO">
+		delete from adannouncement
+		where seqno=#{seqno}
+	</delete>
+	<!-- parameterType은 매개변수 타입으로 seqno 하나만 넘어올 경우 string타입으로, 데이터가 여러 개 들어가는 경우는 vo의 형태 -->
+	<!-- resultType은 리턴 타입으로 하나의 값만 넘어간다면 리턴 타입도 string이 가능하다 -->
+</mapper>

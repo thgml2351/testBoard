@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd" >
+<configuration>
+	<typeAliases>
+		<typeAlias type="egovframework.hans.testboard.model.TestBoardVO" alias="TestBoardVO" />
+		<!-- Mapper에서 VO를 사용할 때 패키지까지 전부 적어줘야 하는데, 그걸 config 파일에 설정해서 VO명만으로 사용할 수 있다. -->
+	</typeAliases>
+</configuration>
